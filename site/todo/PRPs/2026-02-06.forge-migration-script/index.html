@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="|">
+        <meta name="description" content="migrate_forge Docs by pforret">
       
       
       
-        <link rel="canonical" href="http://migrate_forge.test/todo/PRPs/2026-02-06.forge-migration-script/">
+        <link rel="canonical" href="https://pforret.github.io/migrate_forge/todo/PRPs/2026-02-06.forge-migration-script/">
       
       
         <link rel="prev" href="../../../examples/wizard/">
@@ -22,7 +22,7 @@
     
     
       
-        <title>2026 02 06.forge migration script - migrate_forge Docs</title>
+        <title>develop migration script - migrate_forge Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#purpose" class="md-skip">
+        <a href="#develop-migration-script" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2026 02 06.forge migration script
+              develop migration script
             
           </span>
         </div>
@@ -177,7 +177,7 @@
   
     
   
-  Welcome to migrate_forge Docs
+  migrate_forge
 
       </a>
     </li>
@@ -302,7 +302,7 @@
         
   
   <span class="md-ellipsis">
-    Welcome to migrate_forge Docs
+    migrate_forge
   </span>
   
 
@@ -627,12 +627,14 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    2026 02 06.forge migration script
+    develop migration script
   </span>
   
 
@@ -643,7 +645,7 @@
         
   
   <span class="md-ellipsis">
-    2026 02 06.forge migration script
+    develop migration script
   </span>
   
 
@@ -654,6 +656,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -983,8 +987,9 @@
                   
 
 
-  <h1>2026 02 06.forge migration script</h1>
-
+<h1 id="develop-migration-script">develop migration script<a class="headerlink" href="#develop-migration-script" title="Permanent link">&para;</a></h1>
+<p>name: "Forge Migration Script - Backup/Transfer/Restore Laravel Sites"
+description: |</p>
 <h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
 <p>Implement a bash script (bashew-based) to migrate a Laravel website with all its data
 from one Laravel Forge-managed server to another. Uses a backup/restore strategy with
@@ -999,11 +1004,13 @@ a password-protected zip file as the transport mechanism.</p>
 </ol>
 <hr />
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
-<p>Build <code>migrate_forge.sh</code> with three main verbs:
-- <strong>backup</strong>: Run on source server - packs .env, database dump, and storage/app into a password-protected zip
-- <strong>restore</strong>: Run on destination server - prompts for password, unzips, restores .env, database, and storage/app
-- <strong>setup</strong>: Uses Laravel Forge API to create the site on the new server, install git repo, configure deployment script, and request SSL certificate
-- <strong>wizard</strong>: Interactive guided migration - picks servers from ~/.ssh/config, lists sites, asks what to include, then outputs a step-by-step migration plan with exact commands</p>
+<p>Build <code>migrate_forge.sh</code> with three main verbs:</p>
+<ul>
+<li><strong>backup</strong>: Run on source server - packs .env, database dump, and storage/app into a password-protected zip</li>
+<li><strong>restore</strong>: Run on destination server - prompts for password, unzips, restores .env, database, and storage/app</li>
+<li><strong>setup</strong>: Uses Laravel Forge API to create the site on the new server, install git repo, configure deployment script, and request SSL certificate</li>
+<li><strong>wizard</strong>: Interactive guided migration - picks servers from ~/.ssh/config, lists sites, asks what to include, then outputs a step-by-step migration plan with exact commands</li>
+</ul>
 <h2 id="why">Why<a class="headerlink" href="#why" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Migrating Laravel sites between Forge servers is a common but error-prone manual process</li>
@@ -1013,32 +1020,38 @@ a password-protected zip file as the transport mechanism.</p>
 </ul>
 <h2 id="what">What<a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
 <h3 id="user-visible-behavior">User-visible behavior<a class="headerlink" href="#user-visible-behavior" title="Permanent link">&para;</a></h3>
-<p><strong><code>migrate_forge backup</code></strong> (run on source server via SSH):
-1. Detects the Laravel project root (looks for artisan file)
-2. Dumps the MySQL database using mysqldump (credentials from .env)
-3. Copies the .env file (excluding server-dependent vars like DB_HOST, REDIS_HOST, etc.)
-4. Copies the storage/app folder only (not logs/cache/sessions)
-5. Creates a manifest file with metadata (domain, PHP version, git remote, timestamp)
-6. Zips everything into a password-protected archive
-7. Outputs the path to the zip file</p>
-<p><strong><code>migrate_forge restore</code></strong> (run on destination server via SSH):
-1. Prompts for the password
-2. Extracts the zip file
-3. Smart .env merge:
-   - Variables only in backup: add to current .env
-   - Variables only in current .env: keep as-is
-   - Same value in both: keep as-is
-   - Different value: prompt user, default = keep current .env value
-4. Imports the MySQL database dump
-5. Restores storage/app folder (backs up existing first)
-6. Runs <code>php artisan config:cache</code> and <code>php artisan migrate</code>
-7. Sets correct file permissions (forge:forge, 775)</p>
-<p><strong><code>migrate_forge setup</code></strong> (run from any machine with Forge API access):
-1. Creates a new site on the destination server via Forge API
-2. Installs the git repository (same repo/branch as source)
-3. Copies the deployment script from the source site
-4. Triggers initial deployment
-5. Requests Let's Encrypt SSL certificate</p>
+<p><strong><code>migrate_forge backup</code></strong> (run on source server via SSH):</p>
+<ol>
+<li>Detects the Laravel project root (looks for artisan file)</li>
+<li>Dumps the MySQL database using mysqldump (credentials from .env)</li>
+<li>Copies the .env file (excluding server-dependent vars like DB_HOST, REDIS_HOST, etc.)</li>
+<li>Copies the storage/app folder only (not logs/cache/sessions)</li>
+<li>Creates a manifest file with metadata (domain, PHP version, git remote, timestamp)</li>
+<li>Zips everything into a password-protected archive</li>
+<li>Outputs the path to the zip file</li>
+</ol>
+<p><strong><code>migrate_forge restore</code></strong> (run on destination server via SSH):</p>
+<ol>
+<li>Prompts for the password</li>
+<li>Extracts the zip file</li>
+<li>Smart .env merge:</li>
+<li>Variables only in backup: add to current .env</li>
+<li>Variables only in current .env: keep as-is</li>
+<li>Same value in both: keep as-is</li>
+<li>Different value: prompt user, default = keep current .env value</li>
+<li>Imports the MySQL database dump</li>
+<li>Restores storage/app folder (backs up existing first)</li>
+<li>Runs <code>php artisan config:cache</code> and <code>php artisan migrate</code></li>
+<li>Sets correct file permissions (forge:forge, 775)</li>
+</ol>
+<p><strong><code>migrate_forge setup</code></strong> (run from any machine with Forge API access):</p>
+<ol>
+<li>Creates a new site on the destination server via Forge API</li>
+<li>Installs the git repository (same repo/branch as source)</li>
+<li>Copies the deployment script from the source site</li>
+<li>Triggers initial deployment</li>
+<li>Requests Let's Encrypt SSL certificate</li>
+</ol>
 <h3 id="success-criteria">Success Criteria<a class="headerlink" href="#success-criteria" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>backup</code> creates a valid password-protected zip with .env, db dump, storage/app, and manifest</li>
@@ -1576,9 +1589,6 @@ shellcheck<span class="w"> </span>migrate_forge.sh<span class="w">       </span>
 
 
 
-
-  
-  
 
 
 
