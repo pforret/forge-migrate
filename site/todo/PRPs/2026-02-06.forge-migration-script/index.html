@@ -1,0 +1,1628 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="|">
+      
+      
+      
+        <link rel="canonical" href="http://migrate_forge.test/todo/PRPs/2026-02-06.forge-migration-script/">
+      
+      
+        <link rel="prev" href="../../../examples/wizard/">
+      
+      
+      
+      <link rel="icon" href="../../../icon/android-chrome-192x192.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>2026 02 06.forge migration script - migrate_forge Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Nunito";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#purpose" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="migrate_forge Docs" class="md-header__button md-logo" aria-label="migrate_forge Docs" data-md-component="logo">
+      
+  <img src="../../../icon/android-chrome-192x192.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            migrate_forge Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2026 02 06.forge migration script
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome to migrate_forge Docs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../examples/wizard/" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Todo
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="migrate_forge Docs" class="md-nav__button md-logo" aria-label="migrate_forge Docs" data-md-component="logo">
+      
+  <img src="../../../icon/android-chrome-192x192.png" alt="logo">
+
+    </a>
+    migrate_forge Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to migrate_forge Docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About this site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/features/extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown Extensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/features/plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installed plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/wizard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Forge Migration Wizard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Todo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Todo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PRPs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            PRPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2026 02 06.forge migration script
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2026 02 06.forge migration script
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Goal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what" class="md-nav__link">
+    <span class="md-ellipsis">
+      What
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-visible-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-visible behavior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-needed-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      All Needed Context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="All Needed Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation &amp; References
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-codebase-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current Codebase tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desired-codebase-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desired Codebase tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-gotchas-caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known Gotchas &amp; Caveats
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-blueprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Blueprint
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Blueprint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-models-and-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data models and structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionsflags-to-add-to-optionconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      Options/flags to add to Option:config()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-of-tasks-to-be-completed" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of tasks to be completed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-task-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Per-task pseudocode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Per-task pseudocode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-3-do_backup-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 3: do_backup() pseudocode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-4-do_restore-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 4: do_restore() pseudocode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-5-do_setup-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 5: do_setup() pseudocode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Points
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Loop
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-syntax-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 1: Syntax &amp; Style
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-smoke-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 2: Smoke Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-functional-tests-require-a-laravel-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 3: Functional Tests (require a Laravel project)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-validation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Validation Checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-patterns-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anti-Patterns to Avoid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confidence-score-810" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confidence Score: 8/10
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>2026 02 06.forge migration script</h1>
+
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
+<p>Implement a bash script (bashew-based) to migrate a Laravel website with all its data
+from one Laravel Forge-managed server to another. Uses a backup/restore strategy with
+a password-protected zip file as the transport mechanism.</p>
+<h2 id="core-principles">Core Principles<a class="headerlink" href="#core-principles" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Context is King</strong>: Include ALL necessary documentation, examples, and caveats</li>
+<li><strong>Validation Loops</strong>: Provide executable tests/lints the AI can run and fix</li>
+<li><strong>Information Dense</strong>: Use keywords and patterns from the codebase</li>
+<li><strong>Progressive Success</strong>: Start simple, validate, then enhance</li>
+<li><strong>Global rules</strong>: Be sure to follow all rules in CLAUDE.md</li>
+</ol>
+<hr />
+<h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
+<p>Build <code>migrate_forge.sh</code> with three main verbs:
+- <strong>backup</strong>: Run on source server - packs .env, database dump, and storage/app into a password-protected zip
+- <strong>restore</strong>: Run on destination server - prompts for password, unzips, restores .env, database, and storage/app
+- <strong>setup</strong>: Uses Laravel Forge API to create the site on the new server, install git repo, configure deployment script, and request SSL certificate
+- <strong>wizard</strong>: Interactive guided migration - picks servers from ~/.ssh/config, lists sites, asks what to include, then outputs a step-by-step migration plan with exact commands</p>
+<h2 id="why">Why<a class="headerlink" href="#why" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Migrating Laravel sites between Forge servers is a common but error-prone manual process</li>
+<li>A single zip file as transport is simple, secure (password-protected), and auditable</li>
+<li>Separating data migration (backup/restore) from infrastructure setup (Forge API) keeps concerns clean</li>
+<li>Works across different server providers as long as both are Forge-managed</li>
+</ul>
+<h2 id="what">What<a class="headerlink" href="#what" title="Permanent link">&para;</a></h2>
+<h3 id="user-visible-behavior">User-visible behavior<a class="headerlink" href="#user-visible-behavior" title="Permanent link">&para;</a></h3>
+<p><strong><code>migrate_forge backup</code></strong> (run on source server via SSH):
+1. Detects the Laravel project root (looks for artisan file)
+2. Dumps the MySQL database using mysqldump (credentials from .env)
+3. Copies the .env file (excluding server-dependent vars like DB_HOST, REDIS_HOST, etc.)
+4. Copies the storage/app folder only (not logs/cache/sessions)
+5. Creates a manifest file with metadata (domain, PHP version, git remote, timestamp)
+6. Zips everything into a password-protected archive
+7. Outputs the path to the zip file</p>
+<p><strong><code>migrate_forge restore</code></strong> (run on destination server via SSH):
+1. Prompts for the password
+2. Extracts the zip file
+3. Smart .env merge:
+   - Variables only in backup: add to current .env
+   - Variables only in current .env: keep as-is
+   - Same value in both: keep as-is
+   - Different value: prompt user, default = keep current .env value
+4. Imports the MySQL database dump
+5. Restores storage/app folder (backs up existing first)
+6. Runs <code>php artisan config:cache</code> and <code>php artisan migrate</code>
+7. Sets correct file permissions (forge:forge, 775)</p>
+<p><strong><code>migrate_forge setup</code></strong> (run from any machine with Forge API access):
+1. Creates a new site on the destination server via Forge API
+2. Installs the git repository (same repo/branch as source)
+3. Copies the deployment script from the source site
+4. Triggers initial deployment
+5. Requests Let's Encrypt SSL certificate</p>
+<h3 id="success-criteria">Success Criteria<a class="headerlink" href="#success-criteria" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>backup</code> creates a valid password-protected zip with .env, db dump, storage/app, and manifest</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>restore</code> correctly restores all components from the zip</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>setup</code> creates a functional site on the destination server via Forge API</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Script follows bashew conventions (IO:debug, IO:print, IO:die, Os:require, etc.)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Script handles MySQL databases (mysqldump for backup, mysql for restore)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Script validates prerequisites before starting each action</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>bash -n migrate_forge.sh</code> passes (syntax check)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>shellcheck migrate_forge.sh</code> passes with no errors (warnings acceptable)</li>
+</ul>
+<h2 id="all-needed-context">All Needed Context<a class="headerlink" href="#all-needed-context" title="Permanent link">&para;</a></h2>
+<h3 id="documentation-references">Documentation &amp; References<a class="headerlink" href="#documentation-references" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://forge.laravel.com/docs/api-reference/introduction</span>
+<span class="w">  </span><span class="nt">why</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Forge</span><span class="nv"> </span><span class="s">API</span><span class="nv"> </span><span class="s">authentication:</span><span class="nv"> </span><span class="s">Bearer</span><span class="nv"> </span><span class="s">token,</span><span class="nv"> </span><span class="s">base</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">https://forge.laravel.com/api,</span><span class="nv"> </span><span class="s">required</span><span class="nv"> </span><span class="s">headers</span><span class="nv"> </span><span class="s">Accept/Content-Type</span><span class="nv"> </span><span class="s">application/json&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://forge.laravel.com/api-documentation</span>
+<span class="w">  </span><span class="nt">why</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">Current v1 API endpoints (works until March 2026):</span>
+<span class="w">    </span><span class="no">- GET /api/v1/servers - list servers</span>
+<span class="w">    </span><span class="no">- GET /api/v1/servers/{id} - get server</span>
+<span class="w">    </span><span class="no">- GET /api/v1/servers/{serverId}/sites - list sites</span>
+<span class="w">    </span><span class="no">- GET /api/v1/servers/{serverId}/sites/{siteId} - get site</span>
+<span class="w">    </span><span class="no">- POST /api/v1/servers/{serverId}/sites - create site (params: domain, project_type, aliases, directory, php_version, database)</span>
+<span class="w">    </span><span class="no">- POST /api/v1/servers/{serverId}/sites/{siteId}/git - install repository (params: provider, repository, branch, composer)</span>
+<span class="w">    </span><span class="no">- GET /api/v1/servers/{serverId}/sites/{siteId}/deployment/script - get deployment script</span>
+<span class="w">    </span><span class="no">- PUT /api/v1/servers/{serverId}/sites/{siteId}/deployment/script - update deployment script (params: content)</span>
+<span class="w">    </span><span class="no">- GET /api/v1/servers/{serverId}/sites/{siteId}/env - get .env file</span>
+<span class="w">    </span><span class="no">- PUT /api/v1/servers/{serverId}/sites/{siteId}/env - update .env file (params: content)</span>
+<span class="w">    </span><span class="no">- POST /api/v1/servers/{serverId}/sites/{siteId}/certificates/letsencrypt - request Let&#39;s Encrypt cert (params: domains array)</span>
+<span class="w">    </span><span class="no">- GET /api/v1/servers/{serverId}/sites/{siteId}/nginx - get nginx config</span>
+<span class="w">    </span><span class="no">- PUT /api/v1/servers/{serverId}/sites/{siteId}/nginx - update nginx config (params: content)</span>
+<span class="w">    </span><span class="no">- POST /api/v1/servers/{serverId}/sites/{siteId}/deployment/deploy - trigger deployment</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://forge.laravel.com/docs/cli</span>
+<span class="w">  </span><span class="nt">why</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">Forge CLI commands (alternative to API, requires PHP):</span>
+<span class="w">    </span><span class="no">- forge env:pull example.com .env - download .env</span>
+<span class="w">    </span><span class="no">- forge env:push example.com .env - upload .env</span>
+<span class="w">    </span><span class="no">- forge deploy example.com - trigger deployment</span>
+<span class="w">    </span><span class="no">- forge ssh server-name - SSH into server</span>
+<span class="w">    </span><span class="no">- forge command example.com --command=&quot;php artisan ...&quot; - run remote command</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://spatie.be/docs/laravel-backup/v9/taking-backups/overview</span>
+<span class="w">  </span><span class="nt">why</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">Alternative for database backup (if spatie/laravel-backup is installed):</span>
+<span class="w">    </span><span class="no">- php artisan backup:run --only-db - backup only database</span>
+<span class="w">    </span><span class="no">- Creates zip at: &lt;app-name&gt;/&lt;Y-m-d-H-i-s&gt;.zip</span>
+<span class="w">    </span><span class="no">User suggested using this package for db backup/restore</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">migrate_forge.sh</span>
+<span class="w">  </span><span class="nt">why</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">This is the bashew-based script to modify. Key patterns:</span>
+<span class="w">    </span><span class="no">- Option:config() defines flags/options/params/choices</span>
+<span class="w">    </span><span class="no">- Script:main() dispatches to verb functions via case statement</span>
+<span class="w">    </span><span class="no">- Helper functions like do_action1() implement the verbs</span>
+<span class="w">    </span><span class="no">- IO:print/debug/die/success/alert for output</span>
+<span class="w">    </span><span class="no">- Os:require &quot;binary&quot; [&quot;package&quot;] for dependency checking</span>
+<span class="w">    </span><span class="no">- Os:tempfile [ext] for temp files</span>
+<span class="w">    </span><span class="no">- $TMP_DIR and $LOG_DIR are auto-managed</span>
+<span class="w">    </span><span class="no">- .env files are auto-loaded from script folder and cwd</span>
+</code></pre></div>
+<h3 id="current-codebase-tree">Current Codebase tree<a class="headerlink" href="#current-codebase-tree" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>migrate_forge/
+├── .git/
+├── .claude/
+├── .idea/
+└── migrate_forge.sh          # main bashew script (only file)
+</code></pre></div>
+<h3 id="desired-codebase-tree">Desired Codebase tree<a class="headerlink" href="#desired-codebase-tree" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>migrate_forge/
+├── .git/
+├── .claude/
+├── docs/
+│   └── todo/
+│       └── PRPs/
+│           └── 2026-02-06.forge-migration-script.md  # this PRP
+├── migrate_forge.sh          # main script with all verbs implemented
+└── .env.example              # example config with FORGE_API_TOKEN etc.
+</code></pre></div>
+<h3 id="known-gotchas-caveats">Known Gotchas &amp; Caveats<a class="headerlink" href="#known-gotchas-caveats" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># CRITICAL: zip password protection</span>
+<span class="c1"># Use `zip -e -P &quot;$password&quot;` for encryption, but password on CLI is visible in `ps`</span>
+<span class="c1"># Better: use `zip -e` which prompts for password interactively</span>
+<span class="c1"># Or: use `7z a -p&quot;$password&quot; -mhe=on` for AES-256 encryption (stronger)</span>
+<span class="c1"># Decision: use zip with interactive password prompt for backup, prompt for restore</span>
+
+<span class="c1"># CRITICAL: Database detection</span>
+<span class="c1"># Parse .env for DB_CONNECTION (mysql|pgsql|sqlite)</span>
+<span class="c1"># Parse DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD</span>
+<span class="c1"># MySQL: mysqldump --single-transaction --routines --triggers</span>
+<span class="c1"># PostgreSQL: pg_dump --format=custom (or plain SQL with pg_dump --format=plain)</span>
+<span class="c1"># Restore: mysql &lt; dump.sql / pg_restore or psql &lt; dump.sql</span>
+
+<span class="c1"># CRITICAL: Large storage folders</span>
+<span class="c1"># storage/app can be huge. Use rsync-style progress or warn user about size</span>
+<span class="c1"># zip compression helps but may still be large</span>
+
+<span class="c1"># CRITICAL: File permissions after restore</span>
+<span class="c1"># Laravel needs: storage/ and bootstrap/cache/ writable by web server</span>
+<span class="c1"># chown -R www-data:www-data storage bootstrap/cache (or forge:forge on Forge servers)</span>
+<span class="c1"># chmod -R 775 storage bootstrap/cache</span>
+
+<span class="c1"># CRITICAL: Forge API rate limiting</span>
+<span class="c1"># API returns 429 if too many requests. Add small delays between API calls.</span>
+
+<span class="c1"># CRITICAL: .env differences between servers</span>
+<span class="c1"># Source .env may have different DB credentials, Redis host, queue driver, etc.</span>
+<span class="c1"># Restore should warn user to review/update the .env after restoring</span>
+
+<span class="c1"># GOTCHA: The script itself needs to run ON the servers for backup/restore</span>
+<span class="c1"># but FROM any machine for the setup verb (which only uses the API)</span>
+<span class="c1"># So backup/restore need: zip/unzip, mysql/mysqldump or pg_dump/pg_restore</span>
+<span class="c1"># And setup needs: curl, jq (for JSON parsing)</span>
+</code></pre></div>
+<h2 id="implementation-blueprint">Implementation Blueprint<a class="headerlink" href="#implementation-blueprint" title="Permanent link">&para;</a></h2>
+<h3 id="data-models-and-structure">Data models and structure<a class="headerlink" href="#data-models-and-structure" title="Permanent link">&para;</a></h3>
+<p>The migration archive (zip file) contains:
+<div class="highlight"><pre><span></span><code>migrate_DOMAIN_YYYY-MM-DD.zip
+├── manifest.json          # metadata about the migration
+├── dotenv                 # the .env file (renamed to avoid issues)
+├── database.sql           # database dump (MySQL or PostgreSQL)
+└── storage/               # storage/app folder contents
+    └── app/
+        ├── public/
+        └── ...
+</code></pre></div></p>
+<p><strong>manifest.json structure:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-02-06T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;script_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;laravel_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11.x&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;php_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8.3&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;db_connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;db_database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_db&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;git_remote&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git@github.com:user/repo.git&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;git_branch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;storage_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;source_server&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server-name&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;project_root&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/forge/example.com&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="optionsflags-to-add-to-optionconfig">Options/flags to add to Option:config()<a class="headerlink" href="#optionsflags-to-add-to-optionconfig" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace the current Option:config choices and add new options:</span>
+flag<span class="p">|</span>h<span class="p">|</span>help<span class="p">|</span>show<span class="w"> </span>usage
+flag<span class="p">|</span>Q<span class="p">|</span>QUIET<span class="p">|</span>no<span class="w"> </span>output
+flag<span class="p">|</span>V<span class="p">|</span>VERBOSE<span class="p">|</span>also<span class="w"> </span>show<span class="w"> </span>debug<span class="w"> </span>messages
+flag<span class="p">|</span>f<span class="p">|</span>FORCE<span class="p">|</span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>confirmation<span class="w"> </span><span class="o">(</span>always<span class="w"> </span>yes<span class="o">)</span>
+option<span class="p">|</span>L<span class="p">|</span>LOG_DIR<span class="p">|</span>folder<span class="w"> </span><span class="k">for</span><span class="w"> </span>log<span class="w"> </span>files<span class="p">|</span><span class="nv">$HOME</span>/log/<span class="nv">$script_prefix</span>
+option<span class="p">|</span>T<span class="p">|</span>TMP_DIR<span class="p">|</span>folder<span class="w"> </span><span class="k">for</span><span class="w"> </span>temp<span class="w"> </span>files<span class="p">|</span>/tmp/<span class="nv">$script_prefix</span>
+option<span class="p">|</span>d<span class="p">|</span>domain<span class="p">|</span>website<span class="w"> </span>domain<span class="w"> </span>name
+option<span class="p">|</span>s<span class="p">|</span>server<span class="p">|</span>Forge<span class="w"> </span>server<span class="w"> </span>ID<span class="w"> </span>or<span class="w"> </span>name
+option<span class="p">|</span>r<span class="p">|</span>root<span class="p">|</span>Laravel<span class="w"> </span>project<span class="w"> </span>root<span class="w"> </span>folder<span class="p">|</span>.
+option<span class="p">|</span>o<span class="p">|</span>output<span class="p">|</span>output<span class="w"> </span>zip<span class="w"> </span>file<span class="w"> </span>path
+choice<span class="p">|</span><span class="m">1</span><span class="p">|</span>action<span class="p">|</span>action<span class="w"> </span>to<span class="w"> </span>perform<span class="p">|</span>backup,restore,setup,check,env,update
+param<span class="p">|</span>?<span class="p">|</span>input<span class="p">|</span>input<span class="w"> </span>file/text
+</code></pre></div>
+<h3 id="list-of-tasks-to-be-completed">List of tasks to be completed<a class="headerlink" href="#list-of-tasks-to-be-completed" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Task 1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update Option:config() with new options and verbs</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">MODIFY migrate_forge.sh</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">UPDATE the Option:config() function to add</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain, server, root, output options</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">UPDATE the choice line to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backup,restore,setup,check,env,update</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KEEP existing flags (help, QUIET, VERBOSE, FORCE)</span>
+
+<span class="nt">Task 2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update Script:main() case statement with new verbs</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">MODIFY migrate_forge.sh</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REPLACE action1/action2/action3 case blocks with backup/restore/setup</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD TIP comments for each verb</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KEEP check/env/update verbs as-is</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD Os:require calls at the top for common dependencies</span>
+
+<span class="nt">Task 3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implement do_backup() function</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">MODIFY migrate_forge.sh</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REPLACE do_action1() with do_backup()</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Detect Laravel project root (find artisan file)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parse .env for database credentials and app metadata</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create temp working directory</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Dump database (MySQL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldump, PostgreSQL</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pg_dump)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copy .env file as &quot;dotenv&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copy storage/app folder</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate manifest.json with metadata</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create password-protected zip archive (prompt for password)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Report the output file path and size</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Clean up temp directory</span>
+
+<span class="nt">Task 4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implement do_restore() function</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">MODIFY migrate_forge.sh</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REPLACE do_action2() with do_restore()</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Verify input zip file exists</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prompt for zip password</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extract to temp directory</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Read and display manifest.json</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ask for confirmation to proceed</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Detect target Laravel project root</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Restore .env file (with backup of existing)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parse new .env for database credentials</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Import database dump (mysql or pg_restore/psql)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Restore storage/app folder (with backup of existing)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fix file permissions (forge:forge ownership, 775 on storage)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run php artisan config:cache and php artisan migrate</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Clean up temp directory</span>
+
+<span class="nt">Task 5</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implement do_setup() function</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">MODIFY migrate_forge.sh</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD do_setup() function</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Os:require &quot;curl&quot; and &quot;jq&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Read FORGE_API_TOKEN from environment or .env</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Verify API access with a test call (GET /api/v1/servers)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Accept source server ID + site ID (or domain lookup)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Accept destination server ID</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET source site details (domain, PHP version, etc.)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET source deployment script</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET source git repository info</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CREATE new site on destination server</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSTALL git repository on new site</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UPDATE deployment script on new site</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEPLOY the site</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REQUEST Let&#39;s Encrypt SSL certificate</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Report results</span>
+
+<span class="nt">Task 6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implement helper functions</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">MODIFY migrate_forge.sh</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD parse_dotenv() - parse .env file for a specific key</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD detect_project_root() - find Laravel root (artisan file)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD forge_api() - wrapper for Forge API calls with auth header</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD dump_mysql() - mysqldump with proper flags</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD dump_pgsql() - pg_dump with proper flags</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD restore_mysql() - mysql import</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD restore_pgsql() - psql/pg_restore import</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD create_manifest() - generate manifest.json</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADD read_manifest() - parse manifest.json</span>
+
+<span class="nt">Task 7</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create .env.example</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">CREATE .env.example with</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FORGE_API_TOKEN=</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FORGE_SOURCE_SERVER=</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FORGE_SOURCE_SITE=</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FORGE_DEST_SERVER=</span>
+
+<span class="nt">Task 8</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Validation and testing</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">- Run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash -n migrate_forge.sh</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">- Run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shellcheck migrate_forge.sh</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">- Run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./migrate_forge.sh check</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">- Run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./migrate_forge.sh --help</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">- Fix any issues found</span>
+</code></pre></div>
+<h3 id="per-task-pseudocode">Per-task pseudocode<a class="headerlink" href="#per-task-pseudocode" title="Permanent link">&para;</a></h3>
+<h4 id="task-3-do_backup-pseudocode">Task 3: do_backup() pseudocode<a class="headerlink" href="#task-3-do_backup-pseudocode" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>do_backup<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="c1"># 1. Find Laravel root</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>project_root
+<span class="w">  </span><span class="nv">project_root</span><span class="o">=</span><span class="k">$(</span>detect_project_root<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">root</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/artisan&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;No Laravel project found at [</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">]&quot;</span>
+
+<span class="w">  </span><span class="c1"># 2. Parse .env</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">env_file</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/.env&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;No .env file found at [</span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="s2">]&quot;</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>db_connection<span class="w"> </span>db_host<span class="w"> </span>db_port<span class="w"> </span>db_database<span class="w"> </span>db_username<span class="w"> </span>db_password
+<span class="w">  </span><span class="nv">db_connection</span><span class="o">=</span><span class="k">$(</span>parse_dotenv<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;DB_CONNECTION&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="nv">db_database</span><span class="o">=</span><span class="k">$(</span>parse_dotenv<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;DB_DATABASE&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="c1"># ... etc for all DB_ vars</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>app_name<span class="w"> </span>domain_name
+<span class="w">  </span><span class="nv">app_name</span><span class="o">=</span><span class="k">$(</span>parse_dotenv<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;APP_NAME&quot;</span><span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># 3. Determine domain from option or .env APP_URL</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">domain</span><span class="o">=</span><span class="k">$(</span>parse_dotenv<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;APP_URL&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s|https\?://||&#39;</span><span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># 4. Create temp working dir</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>work_dir
+<span class="w">  </span><span class="nv">work_dir</span><span class="o">=</span><span class="k">$(</span>Os:tempfile<span class="w"> </span><span class="s2">&quot;d&quot;</span><span class="k">)</span><span class="w">  </span><span class="c1"># or use mktemp -d</span>
+<span class="w">  </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="c1"># 5. Dump database</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Dumping </span><span class="si">${</span><span class="nv">db_connection</span><span class="si">}</span><span class="s2"> database [</span><span class="si">${</span><span class="nv">db_database</span><span class="si">}</span><span class="s2">]...&quot;</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_connection</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>mysql<span class="o">)</span><span class="w">  </span>dump_mysql<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_host</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_port</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_database</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_username</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/database.sql&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">    </span>pgsql<span class="o">)</span><span class="w">  </span>dump_pgsql<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_host</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_port</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_database</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_username</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_password</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/database.sql&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">    </span>sqlite<span class="o">)</span><span class="w"> </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/database/</span><span class="si">${</span><span class="nv">db_database</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/database.sqlite&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">    </span>*<span class="o">)</span><span class="w">      </span>IO:die<span class="w"> </span><span class="s2">&quot;Unsupported database connection [</span><span class="si">${</span><span class="nv">db_connection</span><span class="si">}</span><span class="s2">]&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span><span class="k">esac</span>
+
+<span class="w">  </span><span class="c1"># 6. Copy .env</span>
+<span class="w">  </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/dotenv&quot;</span>
+
+<span class="w">  </span><span class="c1"># 7. Copy storage/app</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage/app&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>IO:announce<span class="w"> </span><span class="s2">&quot;Copying storage/app folder...&quot;</span>
+<span class="w">    </span>cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage/app&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/storage_app&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># 8. Create manifest</span>
+<span class="w">  </span>create_manifest<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_connection</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_database</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="c1"># 9. Create password-protected zip</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>zip_name
+<span class="w">  </span><span class="nv">zip_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">output</span><span class="k">:-</span><span class="nv">migrate_</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="nv">_</span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="p">.zip</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Creating encrypted zip archive...&quot;</span>
+<span class="w">  </span>Os:require<span class="w"> </span><span class="s2">&quot;zip&quot;</span>
+<span class="w">  </span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>zip<span class="w"> </span>-r<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zip_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>manifest.json<span class="w"> </span>dotenv<span class="w"> </span>database.*<span class="w"> </span>storage_app/<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="o">)</span>
+<span class="w">  </span><span class="c1"># zip -e prompts for password interactively</span>
+<span class="w">  </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">zip_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;./</span><span class="si">${</span><span class="nv">zip_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="c1"># 10. Report</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>size
+<span class="w">  </span><span class="nv">size</span><span class="o">=</span><span class="k">$(</span>du<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;./</span><span class="si">${</span><span class="nv">zip_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span>
+<span class="w">  </span>IO:success<span class="w"> </span><span class="s2">&quot;Backup created: ./</span><span class="si">${</span><span class="nv">zip_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">${</span><span class="nv">size</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<span class="w">  </span><span class="c1"># 11. Cleanup</span>
+<span class="w">  </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="task-4-do_restore-pseudocode">Task 4: do_restore() pseudocode<a class="headerlink" href="#task-4-do_restore-pseudocode" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>do_restore<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">zip_file</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">input</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zip_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;Usage: </span><span class="nv">$script_prefix</span><span class="s2"> restore &lt;zipfile&gt;&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zip_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;File not found: [</span><span class="si">${</span><span class="nv">zip_file</span><span class="si">}</span><span class="s2">]&quot;</span>
+
+<span class="w">  </span><span class="c1"># 1. Extract (will prompt for password)</span>
+<span class="w">  </span>Os:require<span class="w"> </span><span class="s2">&quot;unzip&quot;</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>work_dir
+<span class="w">  </span><span class="nv">work_dir</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Extracting archive (enter password when prompted)...&quot;</span>
+<span class="w">  </span>unzip<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zip_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;Failed to extract - wrong password?&quot;</span>
+
+<span class="w">  </span><span class="c1"># 2. Read manifest</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;Invalid archive - no manifest.json found&quot;</span>
+<span class="w">  </span>read_manifest<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span>
+<span class="w">  </span>IO:print<span class="w"> </span><span class="s2">&quot;Migration from: </span><span class="si">${</span><span class="nv">manifest_domain</span><span class="si">}</span><span class="s2"> (</span><span class="si">${</span><span class="nv">manifest_db_connection</span><span class="si">}</span><span class="s2">)&quot;</span>
+<span class="w">  </span>IO:print<span class="w"> </span><span class="s2">&quot;Created: </span><span class="si">${</span><span class="nv">manifest_created_at</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="c1"># 3. Confirm</span>
+<span class="w">  </span>IO:confirm<span class="w"> </span><span class="s2">&quot;Proceed with restore?&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;Aborted by user&quot;</span>
+
+<span class="w">  </span><span class="c1"># 4. Detect project root</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>project_root
+<span class="w">  </span><span class="nv">project_root</span><span class="o">=</span><span class="k">$(</span>detect_project_root<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">root</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># 5. Restore .env (backup existing first)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/.env&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/.env&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/.env.backup.</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d%H%M%S<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">    </span>IO:debug<span class="w"> </span><span class="s2">&quot;Existing .env backed up&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="w">  </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/dotenv&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/.env&quot;</span>
+<span class="w">  </span>IO:alert<span class="w"> </span><span class="s2">&quot;IMPORTANT: Review and update .env for new server (DB credentials, Redis, etc.)&quot;</span>
+
+<span class="w">  </span><span class="c1"># 6. Restore database</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>db_connection<span class="w"> </span>db_host<span class="w"> </span>db_port<span class="w"> </span>db_database<span class="w"> </span>db_username<span class="w"> </span>db_password
+<span class="w">  </span><span class="c1"># parse from the RESTORED .env (user should update DB creds first if different)</span>
+<span class="w">  </span><span class="c1"># OR parse from manifest and ask user</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Restoring database...&quot;</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">manifest_db_connection</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>mysql<span class="o">)</span><span class="w">  </span>restore_mysql<span class="w"> </span>...<span class="w"> </span><span class="p">;;</span>
+<span class="w">    </span>pgsql<span class="o">)</span><span class="w">  </span>restore_pgsql<span class="w"> </span>...<span class="w"> </span><span class="p">;;</span>
+<span class="w">    </span>sqlite<span class="o">)</span><span class="w"> </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/database.sqlite&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/database/&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span><span class="k">esac</span>
+
+<span class="w">  </span><span class="c1"># 7. Restore storage/app</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/storage_app&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>IO:announce<span class="w"> </span><span class="s2">&quot;Restoring storage/app...&quot;</span>
+<span class="w">    </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage/app&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage/app&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage/app.backup.</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d%H%M%S<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">    </span>cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">/storage_app&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage/app&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="c1"># 8. Fix permissions</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Fixing permissions...&quot;</span>
+<span class="w">  </span>chown<span class="w"> </span>-R<span class="w"> </span>forge:forge<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/bootstrap/cache&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">775</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/storage&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">/bootstrap/cache&quot;</span>
+
+<span class="w">  </span><span class="c1"># 9. Laravel cache/migrate</span>
+<span class="w">  </span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">project_root</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>config:cache<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate<span class="w"> </span>--force<span class="o">)</span>
+
+<span class="w">  </span><span class="c1"># 10. Cleanup</span>
+<span class="w">  </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">work_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span>IO:success<span class="w"> </span><span class="s2">&quot;Restore complete for </span><span class="si">${</span><span class="nv">manifest_domain</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="task-5-do_setup-pseudocode">Task 5: do_setup() pseudocode<a class="headerlink" href="#task-5-do_setup-pseudocode" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>do_setup<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>Os:require<span class="w"> </span><span class="s2">&quot;curl&quot;</span>
+<span class="w">  </span>Os:require<span class="w"> </span><span class="s2">&quot;jq&quot;</span>
+
+<span class="w">  </span><span class="c1"># 1. Get API token</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">api_token</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FORGE_API_TOKEN</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">api_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;FORGE_API_TOKEN not set - add to .env or export&quot;</span>
+
+<span class="w">  </span><span class="c1"># 2. Determine source and destination</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">source_server</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FORGE_SOURCE_SERVER</span><span class="k">:-</span><span class="si">${</span><span class="nv">server</span><span class="k">:-</span><span class="si">}}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">dest_server</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FORGE_DEST_SERVER</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">source_server</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;Source server not specified (--server or FORGE_SOURCE_SERVER)&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;Destination server not specified (FORGE_DEST_SERVER)&quot;</span>
+
+<span class="w">  </span><span class="c1"># 3. Find source site by domain</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>source_site_id
+<span class="w">  </span><span class="nv">source_site_id</span><span class="o">=</span><span class="k">$(</span>forge_api<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">source_server</span><span class="si">}</span><span class="s2">/sites&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.sites[] | select(.name == \&quot;</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2">\&quot;) | .id&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">source_site_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>IO:die<span class="w"> </span><span class="s2">&quot;Site [</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2">] not found on server [</span><span class="si">${</span><span class="nv">source_server</span><span class="si">}</span><span class="s2">]&quot;</span>
+
+<span class="w">  </span><span class="c1"># 4. Get source site details</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>site_info<span class="w"> </span>deploy_script
+<span class="w">  </span><span class="nv">site_info</span><span class="o">=</span><span class="k">$(</span>forge_api<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">source_server</span><span class="si">}</span><span class="s2">/sites/</span><span class="si">${</span><span class="nv">source_site_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="nv">deploy_script</span><span class="o">=</span><span class="k">$(</span>forge_api<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">source_server</span><span class="si">}</span><span class="s2">/sites/</span><span class="si">${</span><span class="nv">source_site_id</span><span class="si">}</span><span class="s2">/deployment/script&quot;</span><span class="k">)</span>
+
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>repository<span class="w"> </span>branch<span class="w"> </span>php_version<span class="w"> </span>project_type<span class="w"> </span>directory
+<span class="w">  </span><span class="nv">repository</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">site_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.site.repository&#39;</span><span class="k">)</span>
+<span class="w">  </span><span class="nv">branch</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">site_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.site.repository_branch&#39;</span><span class="k">)</span>
+<span class="w">  </span><span class="c1"># ... etc</span>
+
+<span class="w">  </span><span class="c1"># 5. Create site on destination</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Creating site [</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2">] on server [</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">]...&quot;</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>new_site
+<span class="w">  </span><span class="nv">new_site</span><span class="o">=</span><span class="k">$(</span>forge_api<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">/sites&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;{\&quot;domain\&quot;:\&quot;</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2">\&quot;,\&quot;project_type\&quot;:\&quot;php\&quot;,\&quot;php_version\&quot;:\&quot;</span><span class="si">${</span><span class="nv">php_version</span><span class="si">}</span><span class="s2">\&quot;,\&quot;directory\&quot;:\&quot;/public\&quot;}&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="nb">local</span><span class="w"> </span>new_site_id
+<span class="w">  </span><span class="nv">new_site_id</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">new_site</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.site.id&#39;</span><span class="k">)</span>
+
+<span class="w">  </span><span class="c1"># 6. Install git repository</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Installing repository [</span><span class="si">${</span><span class="nv">repository</span><span class="si">}</span><span class="s2">] branch [</span><span class="si">${</span><span class="nv">branch</span><span class="si">}</span><span class="s2">]...&quot;</span>
+<span class="w">  </span>forge_api<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">/sites/</span><span class="si">${</span><span class="nv">new_site_id</span><span class="si">}</span><span class="s2">/git&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;{\&quot;provider\&quot;:\&quot;github\&quot;,\&quot;repository\&quot;:\&quot;</span><span class="si">${</span><span class="nv">repository</span><span class="si">}</span><span class="s2">\&quot;,\&quot;branch\&quot;:\&quot;</span><span class="si">${</span><span class="nv">branch</span><span class="si">}</span><span class="s2">\&quot;,\&quot;composer\&quot;:true}&quot;</span>
+
+<span class="w">  </span><span class="c1"># 7. Update deployment script</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Updating deployment script...&quot;</span>
+<span class="w">  </span>forge_api<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">/sites/</span><span class="si">${</span><span class="nv">new_site_id</span><span class="si">}</span><span class="s2">/deployment/script&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;{\&quot;content\&quot;:</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">deploy_script</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-Rs<span class="k">)</span><span class="s2">}&quot;</span>
+
+<span class="w">  </span><span class="c1"># 8. Deploy</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Triggering deployment...&quot;</span>
+<span class="w">  </span>forge_api<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">/sites/</span><span class="si">${</span><span class="nv">new_site_id</span><span class="si">}</span><span class="s2">/deployment/deploy&quot;</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
+<span class="w">  </span><span class="c1"># 9. Request SSL</span>
+<span class="w">  </span>IO:announce<span class="w"> </span><span class="s2">&quot;Requesting Let&#39;s Encrypt SSL certificate...&quot;</span>
+<span class="w">  </span>forge_api<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;/api/v1/servers/</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">/sites/</span><span class="si">${</span><span class="nv">new_site_id</span><span class="si">}</span><span class="s2">/certificates/letsencrypt&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;{\&quot;domains\&quot;:[\&quot;</span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2">\&quot;]}&quot;</span>
+
+<span class="w">  </span>IO:success<span class="w"> </span><span class="s2">&quot;Site setup complete on server [</span><span class="si">${</span><span class="nv">dest_server</span><span class="si">}</span><span class="s2">]&quot;</span>
+<span class="w">  </span>IO:print<span class="w"> </span><span class="s2">&quot;Next steps:&quot;</span>
+<span class="w">  </span>IO:print<span class="w"> </span><span class="s2">&quot;  1. SSH into new server and run: </span><span class="nv">$script_prefix</span><span class="s2"> restore &lt;zipfile&gt;&quot;</span>
+<span class="w">  </span>IO:print<span class="w"> </span><span class="s2">&quot;  2. Update .env on new server with correct credentials&quot;</span>
+<span class="w">  </span>IO:print<span class="w"> </span><span class="s2">&quot;  3. Update DNS to point </span><span class="si">${</span><span class="nv">domain</span><span class="si">}</span><span class="s2"> to new server IP&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="integration-points">Integration Points<a class="headerlink" href="#integration-points" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">ENVIRONMENT VARIABLES (in .env or exported)</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">FORGE_API_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Laravel Forge API bearer token (required for setup)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">FORGE_SOURCE_SERVER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source server ID in Forge (for setup)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">FORGE_SOURCE_SITE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source site ID in Forge (optional, can lookup by domain)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">FORGE_DEST_SERVER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Destination server ID in Forge (for setup)</span>
+
+<span class="nt">DEPENDENCIES</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">backup</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip (for creating password-protected archive)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldump or pg_dump (for database dump)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jq (for creating manifest.json)</span>
+
+<span class="w">  </span><span class="nt">restore</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unzip (for extracting archive)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql or psql (for database import)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jq (for reading manifest.json)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php (for artisan commands)</span>
+
+<span class="w">  </span><span class="nt">setup</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl (for Forge API calls)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jq (for JSON parsing)</span>
+</code></pre></div>
+<h2 id="validation-loop">Validation Loop<a class="headerlink" href="#validation-loop" title="Permanent link">&para;</a></h2>
+<h3 id="level-1-syntax-style">Level 1: Syntax &amp; Style<a class="headerlink" href="#level-1-syntax-style" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run these FIRST - fix any errors before proceeding</span>
+bash<span class="w"> </span>-n<span class="w"> </span>migrate_forge.sh<span class="w">          </span><span class="c1"># Syntax check - must pass with zero errors</span>
+shellcheck<span class="w"> </span>migrate_forge.sh<span class="w">       </span><span class="c1"># Static analysis - fix errors, warnings acceptable</span>
+
+<span class="c1"># Expected: No errors. If errors, READ the error and fix.</span>
+</code></pre></div>
+<h3 id="level-2-smoke-tests">Level 2: Smoke Tests<a class="headerlink" href="#level-2-smoke-tests" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># These should all work without any server access:</span>
+./migrate_forge.sh<span class="w"> </span>--help<span class="w">              </span><span class="c1"># Should show usage with all verbs</span>
+./migrate_forge.sh<span class="w"> </span>check<span class="w">               </span><span class="c1"># Should show all options/flags with defaults</span>
+./migrate_forge.sh<span class="w"> </span>env<span class="w"> </span>&gt;<span class="w"> </span>.env.example<span class="w">  </span><span class="c1"># Should generate valid .env template</span>
+
+<span class="c1"># Test that each verb is reachable (will fail with missing deps, but shouldn&#39;t crash):</span>
+./migrate_forge.sh<span class="w"> </span>backup<span class="w"> </span>--help<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-5<span class="w">   </span><span class="c1"># Should not show &quot;action not recognized&quot;</span>
+</code></pre></div>
+<h3 id="level-3-functional-tests-require-a-laravel-project">Level 3: Functional Tests (require a Laravel project)<a class="headerlink" href="#level-3-functional-tests-require-a-laravel-project" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># On a server with a Laravel project:</span>
+<span class="nb">cd</span><span class="w"> </span>/home/forge/example.com
+/path/to/migrate_forge.sh<span class="w"> </span>backup<span class="w"> </span>-d<span class="w"> </span>example.com
+
+<span class="c1"># On the destination server:</span>
+/path/to/migrate_forge.sh<span class="w"> </span>restore<span class="w"> </span>migrate_example.com_2026-02-06.zip
+
+<span class="c1"># From any machine with API access:</span>
+<span class="nv">FORGE_API_TOKEN</span><span class="o">=</span>xxx<span class="w"> </span>/path/to/migrate_forge.sh<span class="w"> </span>setup<span class="w"> </span>-d<span class="w"> </span>example.com<span class="w"> </span>-s<span class="w"> </span><span class="m">12345</span>
+</code></pre></div>
+<h2 id="final-validation-checklist">Final Validation Checklist<a class="headerlink" href="#final-validation-checklist" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>bash -n migrate_forge.sh</code> passes</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>shellcheck migrate_forge.sh</code> has no errors (warnings OK)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>./migrate_forge.sh --help</code> shows all verbs and options correctly</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>./migrate_forge.sh check</code> runs without errors</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> All three verbs (backup, restore, setup) are dispatched correctly in case statement</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Helper functions parse_dotenv, detect_project_root, forge_api are implemented</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Database support for both MySQL and PostgreSQL</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Password prompt works for both zip creation and extraction</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> manifest.json is created/read correctly with jq</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> .env.example created with all needed variables documented</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> No hardcoded paths or credentials in the script</li>
+</ul>
+<hr />
+<h2 id="anti-patterns-to-avoid">Anti-Patterns to Avoid<a class="headerlink" href="#anti-patterns-to-avoid" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Do NOT put passwords on the command line (visible in <code>ps</code>) - use interactive prompts or read from stdin</li>
+<li>Do NOT use <code>eval</code> for parsing .env - use grep/awk to extract individual values safely</li>
+<li>Do NOT assume MySQL - always check DB_CONNECTION from .env</li>
+<li>Do NOT overwrite existing files without backup - always create .backup.timestamp copies</li>
+<li>Do NOT skip error checking on API calls - check HTTP status codes</li>
+<li>Do NOT store FORGE_API_TOKEN in the script - always read from environment/.env</li>
+<li>Do NOT modify the bashew boilerplate below the "DO NOT MODIFY" line</li>
+<li>Do NOT create separate files - everything goes in migrate_forge.sh (bashew convention)</li>
+</ul>
+<hr />
+<h2 id="confidence-score-810">Confidence Score: 8/10<a class="headerlink" href="#confidence-score-810" title="Permanent link">&para;</a></h2>
+<p>High confidence because:
+- Clear separation of concerns (backup/restore/setup)
+- Well-defined data format (zip with manifest)
+- Standard tools (zip, mysqldump, curl, jq)
+- Bashew framework handles all the boilerplate</p>
+<p>Risks:
+- Large storage/app folders may take a long time to zip/transfer
+- Database dump format compatibility between MySQL versions
+- Forge API v1 deprecation (March 2026) - may need migration to new API
+- Edge cases: SQLite databases, custom storage disks, multi-database setups</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 migrate_forge Docs &bull; pforret
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "header.autohide", "navigation.instant", "navigation.integrate", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "search.highlight", "search.suggest", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

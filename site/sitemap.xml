@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>http://migrate_forge.test/</loc>
+         <lastmod>2026-02-06</lastmod>
+    </url>
+    <url>
+         <loc>http://migrate_forge.test/about/</loc>
+         <lastmod>2026-02-06</lastmod>
+    </url>
+    <url>
+         <loc>http://migrate_forge.test/about/features/extensions/</loc>
+         <lastmod>2026-02-06</lastmod>
+    </url>
+    <url>
+         <loc>http://migrate_forge.test/about/features/plugins/</loc>
+         <lastmod>2026-02-06</lastmod>
+    </url>
+    <url>
+         <loc>http://migrate_forge.test/examples/wizard/</loc>
+         <lastmod>2026-02-06</lastmod>
+    </url>
+    <url>
+         <loc>http://migrate_forge.test/todo/PRPs/2026-02-06.forge-migration-script/</loc>
+         <lastmod>2026-02-06</lastmod>
+    </url>
+</urlset>
