@@ -442,8 +442,63 @@ function pick_from_list() {
 function list_remote_sites() {
   local ssh_host="$1"
   IO:debug "Listing sites on [${ssh_host}]"
-  ssh -o ConnectTimeout=5 "${ssh_host}" "ls -1 /home/forge/ 2>/dev/null | grep -v '^\\.'" 2>/dev/null \
+  ssh -o ConnectTimeout=5 "${ssh_host}" "for d in /home/forge/*/; do [ -d \"\${d}.git\" ] && basename \"\${d}\"; done" 2>/dev/null \
     || IO:die "Cannot SSH to [${ssh_host}] or no sites found"
+}
+
+#####################################################################
+## Helper: show site info (git, .env, storage, database) via SSH
+#####################################################################
+function show_site_info() {
+  local ssh_host="$1"
+  local site="$2"
+  local site_path="/home/forge/${site}"
+
+  IO:announce "Fetching site info for ${site}..."
+  local info
+  info=$(ssh -o ConnectTimeout=10 "${ssh_host}" "
+    cd '${site_path}' 2>/dev/null || exit 1
+    # git remote
+    git_remote=\$(git remote get-url origin 2>/dev/null || echo '(none)')
+    # git branch
+    git_branch=\$(git branch --show-current 2>/dev/null || echo '(unknown)')
+    # APP_NAME from .env
+    app_name=\$(grep -m1 '^APP_NAME=' .env 2>/dev/null | cut -d= -f2- | tr -d '\"' || echo '(not set)')
+    # storage/app size
+    storage_size=\$(du -sh storage/app 2>/dev/null | cut -f1 || echo '0')
+    # DB_DATABASE from .env
+    db_name=\$(grep -m1 '^DB_DATABASE=' .env 2>/dev/null | cut -d= -f2- | tr -d '\"' || echo '(not set)')
+    # database size via mysql
+    db_user=\$(grep -m1 '^DB_USERNAME=' .env 2>/dev/null | cut -d= -f2- | tr -d '\"')
+    db_pass=\$(grep -m1 '^DB_PASSWORD=' .env 2>/dev/null | cut -d= -f2- | tr -d '\"')
+    db_host=\$(grep -m1 '^DB_HOST=' .env 2>/dev/null | cut -d= -f2- | tr -d '\"' || echo '127.0.0.1')
+    db_size='(unknown)'
+    if [[ -n \"\${db_user}\" && -n \"\${db_name}\" ]]; then
+      db_size=\$(mysql -h\"\${db_host}\" -u\"\${db_user}\" -p\"\${db_pass}\" -sNe \"SELECT CONCAT(ROUND(SUM(data_length + index_length) / 1024 / 1024, 1), ' MB') FROM information_schema.tables WHERE table_schema='\${db_name}';\" 2>/dev/null || echo '(unknown)')
+    fi
+    # available disk space on /home
+    disk_free=\$(df -h /home/forge 2>/dev/null | awk 'NR==2{print \$4}' || echo '(unknown)')
+    printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' \"\${git_remote}\" \"\${git_branch}\" \"\${app_name}\" \"\${storage_size}\" \"\${db_name}\" \"\${db_size}\" \"\${disk_free}\"
+  " 2>/dev/null) || true
+
+  if [[ -n "${info}" ]]; then
+    local git_remote git_branch app_name storage_size db_name db_size disk_free
+    git_remote=$(sed -n '1p' <<< "${info}")
+    git_branch=$(sed -n '2p' <<< "${info}")
+    app_name=$(sed -n '3p' <<< "${info}")
+    storage_size=$(sed -n '4p' <<< "${info}")
+    db_name=$(sed -n '5p' <<< "${info}")
+    db_size=$(sed -n '6p' <<< "${info}")
+    disk_free=$(sed -n '7p' <<< "${info}")
+    IO:print "  Git remote:   ${git_remote}"
+    IO:print "  Git branch:   ${git_branch}"
+    IO:print "  APP_NAME:     ${app_name}"
+    IO:print "  Storage/app:  ${storage_size}"
+    IO:print "  Database:     ${db_name} (${db_size})"
+    IO:print "  Disk free:    ${disk_free}"
+  else
+    IO:warn "Could not retrieve site info"
+  fi
 }
 
 #####################################################################
@@ -786,6 +841,7 @@ function do_wizard() {
   local source_site
   source_site=$(pick_from_list "Sites on ${source_host}:" "${site_array[@]}")
   IO:success "Source site: ${source_site}"
+  show_site_info "${source_host}" "${source_site}"
 
   # 3. Ask what to include
   IO:print ""
@@ -841,6 +897,15 @@ function do_wizard() {
   local step=1
   local script_path
   script_path=$(Os:follow_link "${BASH_SOURCE[0]}")
+  local script_name
+  script_name=$(basename "${script_path}")
+  local raw_url="https://raw.githubusercontent.com/pforret/migrate_forge/refs/heads/main/${script_name}"
+
+  IO:print "${txtBold}Step ${step}: Install ${script_name} on both servers${txtReset}"
+  IO:print "  ssh ${source_host} \"curl -sL ${raw_url} -o /home/forge/${script_name} && chmod +x /home/forge/${script_name}\""
+  IO:print "  ssh ${dest_host} \"curl -sL ${raw_url} -o /home/forge/${script_name} && chmod +x /home/forge/${script_name}\""
+  IO:print ""
+  ((step++))
 
   IO:print "${txtBold}Step ${step}: Create backup on source server${txtReset}"
   IO:print "  ssh ${source_host}"
