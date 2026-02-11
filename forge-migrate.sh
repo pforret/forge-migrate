@@ -899,7 +899,7 @@ function do_wizard() {
   script_path=$(Os:follow_link "${BASH_SOURCE[0]}")
   local script_name
   script_name=$(basename "${script_path}")
-  local raw_url="https://raw.githubusercontent.com/pforret/migrate_forge/refs/heads/main/${script_name}"
+  local raw_url="https://raw.githubusercontent.com/pforret/forge-migrate/refs/heads/main/${script_name}"
 
   IO:print "${txtBold}Step ${step}: Install ${script_name} on both servers${txtReset}"
   IO:print "  ssh ${source_host} \"curl -sL ${raw_url} -o /home/forge/${script_name} && chmod +x /home/forge/${script_name}\""

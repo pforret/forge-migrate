@@ -32,15 +32,15 @@ Built with [bashew](https://github.com/pforret/bashew).
 Using [basher](https://github.com/basherpm/basher):
 
 ```bash
-basher install pforret/migrate_forge
+basher install pforret/forge-migrate
 ```
 
 Or manually:
 
 ```bash
-git clone https://github.com/pforret/migrate_forge.git
-cd migrate_forge
-chmod +x migrate_forge.sh
+git clone https://github.com/pforret/forge-migrate.git
+cd forge-migrate
+chmod +x forge-migrate.sh
 ```
 
 ## Configuration
@@ -48,7 +48,7 @@ chmod +x migrate_forge.sh
 Copy the example env file and fill in your values:
 
 ```bash
-cp migrate_forge.env.example migrate_forge.env
+cp forge-migrate.env.example forge-migrate.env
 ```
 
 ```env
@@ -66,7 +66,7 @@ The script auto-loads `.env` files from its own directory and the current workin
 ## Usage
 
 ```
-migrate_forge.sh [-h] [-Q] [-V] [-f] [-d <domain>] [-s <server>]
+forge-migrate.sh [-h] [-Q] [-V] [-f] [-d <domain>] [-s <server>]
                  [-D <DEST_SERVER>] [-r <root>] [-o <output>]
                  <action> [<input>]
 ```
@@ -97,7 +97,7 @@ migrate_forge.sh [-h] [-Q] [-V] [-f] [-d <domain>] [-s <server>]
 Interactive guided migration. Uses `fzf` to let you pick source/destination servers from `~/.ssh/config`, lists sites on each server via SSH, and generates a step-by-step migration plan with exact commands to run.
 
 ```bash
-./migrate_forge.sh wizard
+./forge-migrate.sh wizard
 ```
 
 Example session:
@@ -128,7 +128,7 @@ Dest   : new-forge-server -> /home/forge/example.com
 
 Step 1: Create backup on source server
   ssh old-forge-server
-  migrate_forge.sh backup -d example.com -r /home/forge/example.com
+  forge-migrate.sh backup -d example.com -r /home/forge/example.com
 
 Step 2: Transfer archive to destination
   scp old-forge-server:/home/forge/example.com/migrate_*.zip /tmp/
@@ -136,7 +136,7 @@ Step 2: Transfer archive to destination
 
 Step 3: Restore on destination server
   ssh new-forge-server
-  migrate_forge.sh restore /tmp/migrate_*.zip -r /home/forge/example.com
+  forge-migrate.sh restore /tmp/migrate_*.zip -r /home/forge/example.com
 
 Step 4: Verify and update DNS
 ```
@@ -152,13 +152,13 @@ Run **on the source server** via SSH. Creates a password-protected zip archive c
 
 ```bash
 # From the Laravel project directory
-./migrate_forge.sh backup -d example.com
+./forge-migrate.sh backup -d example.com
 
 # Specify a different project root
-./migrate_forge.sh backup -d example.com -r /home/forge/example.com
+./forge-migrate.sh backup -d example.com -r /home/forge/example.com
 
 # Custom output path
-./migrate_forge.sh backup -d example.com -o /tmp/my-backup.zip
+./forge-migrate.sh backup -d example.com -o /tmp/my-backup.zip
 ```
 
 The domain is auto-detected from `APP_URL` in `.env` if not specified with `-d`.
@@ -170,13 +170,13 @@ You will be prompted to set a password for the zip archive.
 Run **on the destination server** via SSH. Extracts the archive and restores all components.
 
 ```bash
-./migrate_forge.sh restore /tmp/migrate_example_com_2026-02-06.zip
+./forge-migrate.sh restore /tmp/migrate_example_com_2026-02-06.zip
 ```
 
 With a different project root:
 
 ```bash
-./migrate_forge.sh restore /tmp/migrate_example_com_2026-02-06.zip -r /home/forge/example.com
+./forge-migrate.sh restore /tmp/migrate_example_com_2026-02-06.zip -r /home/forge/example.com
 ```
 
 The restore process:
@@ -200,7 +200,7 @@ The restore process:
 Run **from any machine** with network access to the Forge API. Creates and configures a new site on the destination server, mirroring the source site.
 
 ```bash
-./migrate_forge.sh setup -d example.com -s 12345 -D 67890
+./forge-migrate.sh setup -d example.com -s 12345 -D 67890
 ```
 
 Requires `FORGE_API_TOKEN` in your environment or `.env` file.
@@ -220,7 +220,7 @@ The setup process:
 Show current configuration values and verify required commands are available.
 
 ```bash
-./migrate_forge.sh check
+./forge-migrate.sh check
 ```
 
 ## Full Migration Walkthrough
@@ -229,12 +229,12 @@ A typical migration from server `old-server` (ID `12345`) to `new-server` (ID `6
 
 ```bash
 # 1. (Optional) Create the site on the new server via Forge API
-./migrate_forge.sh setup -d example.com -s 12345 -D 67890
+./forge-migrate.sh setup -d example.com -s 12345 -D 67890
 
 # 2. SSH into the source server and create a backup
 ssh old-server
 cd /home/forge/example.com
-/path/to/migrate_forge.sh backup -d example.com
+/path/to/forge-migrate.sh backup -d example.com
 # -> creates migrate_example_com_2026-02-06.zip (password-protected)
 
 # 3. Transfer the archive to the destination server
@@ -243,7 +243,7 @@ scp migrate_example_com_2026-02-06.zip new-server:/tmp/
 # 4. SSH into the destination server and restore
 ssh new-server
 cd /home/forge/example.com
-/path/to/migrate_forge.sh restore /tmp/migrate_example_com_2026-02-06.zip
+/path/to/forge-migrate.sh restore /tmp/migrate_example_com_2026-02-06.zip
 
 # 5. Update DNS records for example.com to point to the new server IP
 # 6. Wait for DNS propagation, then verify the site
@@ -252,7 +252,7 @@ cd /home/forge/example.com
 Or use the **wizard** to generate these steps interactively:
 
 ```bash
-./migrate_forge.sh wizard
+./forge-migrate.sh wizard
 ```
 
 ## Archive Format
@@ -289,11 +289,11 @@ migrate_example_com_2026-02-06.zip
 The script automatically loads `.env` files in this order (later files override earlier ones):
 
 1. `<script_folder>/.env`
-2. `<script_folder>/.migrate_forge.env`
-3. `<script_folder>/migrate_forge.env`
+2. `<script_folder>/.forge-migrate.env`
+3. `<script_folder>/forge-migrate.env`
 4. `./.env` (current directory, if different from script folder)
-5. `./.migrate_forge.env`
-6. `./migrate_forge.env`
+5. `./.forge-migrate.env`
+6. `./forge-migrate.env`
 
 ## Limitations
 
