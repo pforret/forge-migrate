@@ -1,4 +1,4 @@
-# migrate_forge
+# forge-migrate
 
 Migrate a Laravel website from one [Laravel Forge](https://forge.laravel.com)-managed server to another, using a password-protected zip archive as the transport mechanism.
 
@@ -6,7 +6,7 @@ Built with [bashew](https://github.com/pforret/bashew).
 
 ## Overview
 
-`migrate_forge` provides four verbs for a complete server migration workflow:
+`forge-migrate` provides four verbs for a complete server migration workflow:
 
 | Verb | Run where | Purpose |
 |------|-----------|---------|
